@@ -11,12 +11,21 @@ const webpackConfig = {
 	},
 	resolve: {
 		alias: {
-			'@component': path.resolve('src/component')
+			'@': path.resolve('src')
 		}
 	},
 	module: {
 		rules: [
-			{ test: /\.js$/, loader: 'babel-loader', include: path.resolve('src') },
+			{
+				test: /\.js$/,
+				loader: 'eslint-loader',
+				include: path.resolve('src')
+			},
+			{ 
+				test: /\.js$/,
+				loader: 'babel-loader',
+				include: path.resolve('src')
+			},
 			{ 
 				test: /\.s?css$/,
 				use: extractTextPlugin.extract({
@@ -37,6 +46,28 @@ const webpackConfig = {
 					]
 				}),
 				include: path.resolve('src')
+			},
+			{
+				test: /\.(png|jpe?g|svg)$/,
+				use: [
+					{
+						loader: 'file-loader',
+						options: {
+							name: 'images/[name][hash:8].[ext]'
+						}
+					}
+				]
+			},
+			{
+				test: /\.(woff2?|eot|ttf|otf)$/,
+				use: [
+					{
+						loader: 'file-loader',
+						options: {
+							name: 'fonts/[name][hash:8].[ext]'
+						}
+					}
+				]
 			}
 		]
 	}

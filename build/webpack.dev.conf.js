@@ -21,7 +21,7 @@ const devConfig = webpackMerge(commonConfig, {
 			inject: true
 		}),
 		new extractTextPlugin({
-			filename: 'style/[name].[contenthash:8].css'
+			filename: 'styles/[name].[contenthash:8].css'
 		})
 	]
 })
