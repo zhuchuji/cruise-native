@@ -9,6 +9,7 @@ const devConfig = webpackMerge(commonConfig, {
 	devtool: '#cheap-module-eval-source-map',
 	devServer: {
 		contentBase: false,
+		quiet: true,
 		port: 8080,
 		hot: true
 	},

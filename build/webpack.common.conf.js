@@ -19,12 +19,13 @@ const webpackConfig = {
 			{
 				test: /\.js$/,
 				loader: 'eslint-loader',
-				include: path.resolve('src')
+				enforce: 'pre',
+				include: [path.resolve('src')]
 			},
 			{ 
 				test: /\.js$/,
 				loader: 'babel-loader',
-				include: path.resolve('src')
+				include: [path.resolve('src')]
 			},
 			{ 
 				test: /\.s?css$/,
@@ -33,6 +34,13 @@ const webpackConfig = {
 					use: [
 						{
 							loader: 'css-loader',
+							options: {
+								sourceMap: true,
+								importLoaders: 1
+							}
+						},
+						{
+							loader: 'postcss-loader',
 							options: {
 								sourceMap: true
 							}
@@ -45,7 +53,7 @@ const webpackConfig = {
 						}
 					]
 				}),
-				include: path.resolve('src')
+				include: [path.resolve('src')]
 			},
 			{
 				test: /\.(png|jpe?g|svg)$/,
