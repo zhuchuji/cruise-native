@@ -10,6 +10,7 @@ const devConfig = webpackMerge(commonConfig, {
 	devServer: {
 		contentBase: false,
 		quiet: true,
+		inline: true,
 		port: 8080,
 		hot: true
 	},

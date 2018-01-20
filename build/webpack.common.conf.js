@@ -20,14 +20,14 @@ const webpackConfig = {
 				test: /\.js$/,
 				loader: 'eslint-loader',
 				enforce: 'pre',
-				include: [path.resolve('src')]
+				include: [path.resolve('src'), path.resolve('test')]
 			},
-			{ 
+			{
 				test: /\.js$/,
 				loader: 'babel-loader',
 				include: [path.resolve('src')]
 			},
-			{ 
+			{
 				test: /\.s?css$/,
 				use: extractTextPlugin.extract({
 					fallback: 'style-loader',
