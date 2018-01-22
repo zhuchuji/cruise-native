@@ -15,6 +15,7 @@ module.exports = function (config) {
     webpackMiddleware: {
       noInfo: true
     },
+    singleRun: process.env.npm_config_singleRun,
     coverageReporter: {
       dir: './coverage',
       reporters: [

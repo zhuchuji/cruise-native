@@ -1,5 +1,4 @@
 const path = require('path')
-const extractTextPlugin = require('extract-text-webpack-plugin')
 
 const webpackConfig = {
 	entry: {
@@ -25,34 +24,6 @@ const webpackConfig = {
 			{
 				test: /\.js$/,
 				loader: 'babel-loader',
-				include: [path.resolve('src')]
-			},
-			{
-				test: /\.s?css$/,
-				use: extractTextPlugin.extract({
-					fallback: 'style-loader',
-					use: [
-						{
-							loader: 'css-loader',
-							options: {
-								sourceMap: true,
-								importLoaders: 1
-							}
-						},
-						{
-							loader: 'postcss-loader',
-							options: {
-								sourceMap: true
-							}
-						},
-						{
-							loader: 'sass-loader',
-							options: {
-								sourceMap: true
-							}
-						}
-					]
-				}),
 				include: [path.resolve('src')]
 			},
 			{

@@ -6,8 +6,12 @@ const cleanWebpackPlugin = require('clean-webpack-plugin')
 const commonConfig = require('./webpack.common.conf.js')
 const webpack = require('webpack')
 const extractTextPlugin = require('extract-text-webpack-plugin')
+const { setStyleRules } = require('./util.js')
 
 const prodConfig = webpackMerge(commonConfig, {
+	module: {
+		rules: [setStyleRules({ sourceMap: true, extract: true })]
+	},
 	devtool: 'source-map',
 	plugins: [
 		new webpack.DefinePlugin({
